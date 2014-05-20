@@ -293,6 +293,8 @@ namespace hpp
       (const char* constraintName, const Names_t& constraintNames)
 	throw (Error)
       {
+	   throw Error ("NOT YET IMPLEMENTED");
+        /*
 	using core::ConstraintSetPtr_t;
 	using core::ConfigProjector;
 	using core::ConfigProjectorPtr_t;
@@ -320,6 +322,7 @@ namespace hpp
 	} catch (const std::exception& exc) {
 	  throw Error (exc.what ());
 	}
+        */
       }
 
       // ---------------------------------------------------------------
@@ -345,6 +348,7 @@ namespace hpp
 
       // ---------------------------------------------------------------
 
+      /*
       void Problem::setErrorThreshold (Double threshold) throw (Error)
       {
 	problemSolver_->errorThreshold (threshold);
@@ -355,6 +359,7 @@ namespace hpp
       {
 	problemSolver_->maxIterations (iterations);
       }
+      */
 
       // ---------------------------------------------------------------
 
