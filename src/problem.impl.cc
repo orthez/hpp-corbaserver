@@ -182,13 +182,14 @@ namespace hpp
 
       // ---------------------------------------------------------------
       void Problem::createPositionConstraints (const hpp::floatSeq& input,
-				      hpp::floatSeq_out output)
+				      hpp::floatSeq_out output, double x, double y, double z)
 	throw (hpp::Error)
       {
 
                 //Params
-                JointPtr_t joint1 = problemSolver_->robot()->getJointByName("RLEG_JOINT4");
+                JointPtr_t joint1 = problemSolver_->robot()->getJointByName("RLEG_JOINT0");
                 JointPtr_t joint2 = problemSolver_->robot()->getJointByName("RARM_JOINT4");
+                JointPtr_t joint3 = problemSolver_->robot()->getJointByName("RLEG_JOINT4");
                 vector3_t local1;
                 vector3_t local2;
                 local1.setZero();
@@ -220,18 +221,15 @@ namespace hpp
 
 
                 // Adding constraints into projector
-//		problemSolver_->constraints()->configProjector()->addConstraint(
-//			RelativePosition::create(problemSolver_->robot(), joint1, joint2, local1, local2));
-//		problemSolver_->constraints()->configProjector()->addConstraint(
-//			RelativeOrientation::create(problemSolver_->robot(), joint1, joint2, rotNulle, false) );
+		problemSolver_->constraints()->configProjector()->addConstraint(
+			RelativeOrientation::create(problemSolver_->robot(), joint1, joint3, rotNulle, false) );
 
 
 	problemSolver_->constraints()->configProjector()->addConstraint(
-		RelativePosition::create (problemSolver_->robot(), joint1, joint2, 
-				local1,
-			 	vector3_t (0, 0, 0.8))
-	);
+		RelativePosition::create (problemSolver_->robot(), joint1, joint2, local1, vector3_t (x, y, z)) );
 
+//	problemSolver_->constraints()->configProjector()->addConstraint(
+//		Position::create (problemSolver_->robot(), joint2, local1, vector3_t (0, 0, 0.5)) );
 
 
 

@@ -57,7 +57,7 @@ module hpp
     /// Apply position constraints to a configuration
     ///
     /// constraints are stored in ProblemSolver object
-    void createPositionConstraints (in floatSeq input, out floatSeq output)
+    void createPositionConstraints (in floatSeq input, out floatSeq output, in double x, in double y, in double z)
       raises (Error);
 
     /// Reset constraints
